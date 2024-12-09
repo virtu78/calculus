@@ -1,0 +1,21 @@
+{% extends "agglomerates/base.html" %}
+{% block content %}
+<div class="container">
+    
+   
+    <p class="date_calculate">Даты расчетов</p>
+    <form class="new_group_form" action="{% url 'agglomerates:new_date'  %}" method = "post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить">
+    </form>
+    <ul class="date_calculate_date">
+        {% for date in dates %}
+    
+        <li> <a href="{% url 'agglomerates:single_date' date.id %}">{{ date.created|date:'d E Y' }}</a></li>
+        {% empty %}
+        <li>Не добавлено ни одного расчета пока</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "agglomerates/base.html" %}
+{% block content %}
+<div class="container">
+    <p class="date_text"><a href="{% url 'agglomerates:single_date' date.id %}">{{ date }}</a></p>
+    <div class="edit_actual_output_wrapp"> 
+        <p >Введите </p>
+        
+            <form  style="" class="edit_actual_output" action="{% url 'agglomerates:edit_actual_output' entry.id %}" method = "post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="сохранить">
+            </form>
+        
+    </div>
+
+
+    
+</div>
+{% endblock content %}

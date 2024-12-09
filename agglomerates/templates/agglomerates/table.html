@@ -1,0 +1,142 @@
+{% extends "agglomerates/base.html" %}
+{% block content %}
+
+    
+    <div class="container">
+    <div class="show_hide_column">
+        <div><p>Показать или скрыть столбцы таблицы</p><p class="collapse" id="show_hide_column_control"></p></div>
+        <ul id="crossing">
+         
+            <li><input type="checkbox" value='hide' checked="checked" id="titanium_content" onChange="hide_show_table(this.id);">Содержание титана в агломерате КГОК</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="mechanical_strength" onChange="hide_show_table(this.id);">Механическая (барабанная) прочность агломерата</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="output_in_agglomerate" onChange="hide_show_table(this.id);">Выход в агломерате класса крупности 40+15мм</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="consumption_of_natural_gas" onChange="hide_show_table(this.id);">Расход природного газа</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="water_consumption" onChange="hide_show_table(this.id);">Расход воды в смесительном барабане общий</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="charge_consumption" onChange="hide_show_table(this.id);">Расход агломерационной шихты до высева</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="exhaust_gas" onChange="hide_show_table(this.id);">Температура отходящих газов</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="velocity_am" onChange="hide_show_table(this.id);">Скорость агломашины</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="jig_bed_weight" onChange="hide_show_table(this.id);">Вес постели общий</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="content_titan" onChange="hide_show_table(this.id);">Содержание титана в концентрате</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="content_of_size_class" onChange="hide_show_table(this.id);">Содержание в концентрате класса крупности -0,071 мм</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="output_in_limestone" onChange="hide_show_table(this.id);">Выход в известняке класса крупности +3, мм</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="specific_fuel" onChange="hide_show_table(this.id);">Удельный расход топлива</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="consumption_of_agglomeration_charge" onChange="hide_show_table(this.id);">Расход агломерационной шихты после высева</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="filling_level" onChange="hide_show_table(this.id);">Уровень заполнения бункера постели</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="moisture_content" onChange="hide_show_table(this.id);">Влажность шихты в бункере а/м</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="temperature_in_eighteen" onChange="hide_show_table(this.id);">Температура в вакуум-камере № 18</li>
+            <li><input type="checkbox" value='hide' checked="checked" id="temperature_in_nineteen" onChange="hide_show_table(this.id);">Температура в вакуум-камере № 19</li>
+        </ul>
+    </div>
+    <div class="formula_wrapp"><p><img id="formula" class="formula" src="../static/agglomerates/images/formula.png" alt=""></p><p class="deploy_formula" id="show_hide_formula_control"></p></div>
+</div>
+
+<div><a href="{% url 'agglomerates:export_users_xls' %}">Сохранить в csv</a></div>
+    <table id="table_agglomerates" class="table_agglomerates">
+        <tr class="measurement"> 
+               
+            <td  class="vertical_text">Расчет от:</td>            
+            <td id="titanium_content_head" class="vertical_text">Содержание титана в агломерате КГОК:</td>
+            <td id="mechanical_strength_head" class="vertical_text">Механическая (барабанная) прочность агломерата:</td>
+            <td id="output_in_agglomerate_head" class="vertical_text">Выход в агломерате класса крупности 40+15мм:</td>
+            <td id="consumption_of_natural_gas_head" class="vertical_text">Расход природного газа:</td>
+            <td id="water_consumption_head" class="vertical_text">Расход воды в смесительном барабане общий:</td>
+            <td id="charge_consumption_head" class="vertical_text">Расход агломерационной шихты до высева:</td>
+            <td id="exhaust_gas_head" class="vertical_text">Температура отходящих газов:</td>
+            <td id="velocity_am_head" class="vertical_text">Скорость агломашины:</td>
+            <td id="jig_bed_weight_head" class="vertical_text">Вес постели общий:</td>
+            <td id="content_titan_head" class="vertical_text">Содержание титана в концентрате</td>
+            <td id="content_of_size_class_head" class="vertical_text">Содержание в концентрате класса крупности -0,071 мм:</td>     
+            <td id="output_in_limestone_head" class="vertical_text">Выход в известняке класса крупности +3, мм:</td>
+            <td id="specific_fuel_head" class="vertical_text">Удельный расход топлива</td>
+            <td id="consumption_of_agglomeration_charge_head"class="vertical_text">Расход агломерационной шихты после высева</td>
+            <td id="filling_level_head" class="vertical_text">Уровень заполнения бункера постели:</td>
+            <td id="moisture_content_head"class="vertical_text">Влажность шихты в бункере а/м:</td>
+            <td id="temperature_in_eighteen_head" class="vertical_text">Температура в вакуум-камере № 18:</td>
+            <td id="temperature_in_nineteen_head" class="vertical_text">Температура в вакуум-камере № 19:</td>      
+            <td class="vertical_text">Выход аглотсева:</td>
+            <td id="actual_value"class="vertical_text">Фактическое значение выхода аглоотсева:</td>
+            <td class="vertical_text">Абсолютная разница между расчетным и фактическим значениями:</td>
+        </tr>
+        <tr class="measurement">            
+          
+            <th ></th>            
+            <th class="titanium_content"><i>Ti</i> <sub>a</sub></th>
+            <th class="mechanical_strength"><i>БП</i><sub>a</sub></th>
+            <th class="output_in_agglomerate"><i>&#402;</i><sup>-40+15</sup><sub>a</sub></th>
+            <th class="consumption_of_natural_gas"><i>Q</i><sub>п.г.</sub></th>
+            <th class="water_consumption"><i>Q</i><sub>в.см.</sub></th>
+            <th class="charge_consumption"><i>Q</i><sub>пх.д.</sub></th>
+            <th class="exhaust_gas"><i>T</i><sub>o.газ</sub></th>
+            <th class="velocity_am"><i>&#957;</i><sub>а/м</sub></th>
+            <th class="jig_bed_weight"><i>Q</i><sub>о.пс</sub></th>
+            <th class="content_titan"><i>Ti</i><sub>конц</sub></th>
+            <th class="content_of_size_class"><i>&#945;</i><sub>-0,071</sub></th>
+            <th class="output_in_limestone"><i>&#402;</i><sup>+3</sup><sub>изв</sub></th>
+            <th class="specific_fuel"><i>Q</i><sub>т</sub></th>
+            <th class="consumption_of_agglomeration_charge"><i>Q</i><sub>шх.п</sub></th>
+            <th class="filling_level"><i>H</i><sub>у.б</sub></th>
+            <th class="moisture_content"><i>W</i><sub>шх.б</sub></th>
+            <th class="temperature_in_eighteen"><i>T</i><sub>в-к18</sub></th>
+            <th class="temperature_in_nineteen"><i>T</i><sub>в-к19</sub></th>
+            <th ><i>&#913;</i></th>  
+            <th ><i>&#913;</i><sub>ф</sub></th>
+            <th ></th>         
+        </tr>        
+        <tr class="measurement">            
+          
+            <th ></th>            
+            <th class="titanium_content">%</th>
+            <th class="mechanical_strength">%</th>
+            <th class="output_in_agglomerate">%</th>
+            <th class="consumption_of_natural_gas">м³/т</th>
+            <th class="water_consumption">т/час</th>
+            <th class="charge_consumption">т/час</th>
+            <th class="exhaust_gas">°C</th>
+            <th class="velocity_am">м/мин</th>
+            <th class="jig_bed_weight">т/час</th>
+            <th class="content_titan">%</th>
+            <th class="content_of_size_class">%</th>
+            <th class="output_in_limestone">%</th>
+            <th class="specific_fuel">кг/т</th>
+            <th class="consumption_of_agglomeration_charge">т/час</th>
+            <th class="filling_level">%</th>
+            <th class="moisture_content">%</th>
+            <th class="temperature_in_eighteen">°C</th>
+            <th class="temperature_in_nineteen">°C</th>
+            <th >кг/т</th>  
+            <th >кг/т</th>
+            <th >&Delta;</th>         
+        </tr>
+        {% for entry in entries %}
+       <tr class="entry_output">
+           
+            <td id="{{entry.id}}">{{entry.date_added|date:'d.m.y'}}</td>
+            <td class="titanium_content">{{entry.titanium_content_in_agglomerate}}</td>
+            <td class="mechanical_strength">{{entry.mechanical_strength_of_agglomerate}}</td>
+            <td class="output_in_agglomerate">{{entry.output_in_agglomerate_of_size_class}}</td>
+            <td class="consumption_of_natural_gas">{{entry.specific_consumption_of_natural_gas}}</td>
+            <td class="water_consumption">{{entry.water_consumption_in_drum_pelletizer}}</td>
+            <td class="charge_consumption">{{entry.charge_consumption_before_seeding}}</td>
+            <td class="exhaust_gas">{{entry.exhaust_gas_temperature}}</td>
+            <td class="velocity_am">{{entry.velocity_am}}</td>
+            <td class="jig_bed_weight">{{entry.jig_bed_weight}}</td>
+            <td class="content_titan">{{entry.content_titan_in_source_ore}}</td>
+            <td class="content_of_size_class">{{entry.content_of_size_class_in_source_ore}}</td>
+            <td class="output_in_limestone">{{entry.output_in_limestone_of_size_class}}</td>
+            <td class="specific_fuel">{{entry.specific_fuel_consumption}}</td>
+            <td class="consumption_of_agglomeration_charge">{{entry.consumption_of_agglomeration_charge_after_seeding}}</td>
+            <td class="filling_level">{{entry.filling_level_of_bed_bin}}</td>
+            <td class="moisture_content">{{entry.moisture_content_in_hopper_am}}</td>
+            <td class="temperature_in_eighteen">{{entry.temperature_in_vacuum_chamber_no_eighteen}}</td>
+            <td class="temperature_in_nineteen">{{entry.temperature_in_vacuum_chamber_no_nineteen}}</td>
+            <td class="estimate_output">{{entry.output_agglomerate}}</a></td>
+            <td class="actual_output" ><a href="{% url 'agglomerates:edit_actual_output' entry.id %}">{{ entry.actual_value_of_agglomeration_output }}</a></td>
+            <td >{{entry.difference_between_estimated_and_actual_values}}</td>
+       </tr>
+       
+        {% empty %}
+        <tr><td colspan="22">Расчеты отсутствуют</td></tr>
+        {% endfor %}
+    </table>
+
+{% endblock content %}

@@ -1,0 +1,35 @@
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Институт горного дела УрО РАН</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'agglomerates/css/styles.css' %}" type="text/css"/>
+        <script src="{% static 'agglomerates/js/scripts.js' %}"></script>
+    </head>
+    <body>
+        <div class="container">
+           
+            <div class="app_wrapper">
+                <h1>Многофакторная модель образования аглоотсева</h1>
+                <div id="menu" class="menu">
+                    <a class="menu_item" href="{% url 'agglomerates:index' %}">На главную</a>           
+                    <a class="menu_item" href="{% url 'admin:index' %}">Админ панель</a>                   
+                    <a class="menu_item" href="{% url 'agglomerates:all_dates' %}">Расчеты</a>
+                    <a class="menu_item" href="{% url 'agglomerates:table' %}">Таблица</a>
+                </div>
+                <div class="software_company">
+                    <p>Институт горного дела УрО РАН</p>
+                    <p>Лаборатория управления качеством минерального сырья</p>
+                </div>
+            </div>
+        </div>
+            {% block content %}
+            {% endblock %}
+    </body>
