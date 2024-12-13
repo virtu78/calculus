@@ -5,7 +5,64 @@
     <p class="date_calculate">Новый расчет</p>
     <form class="new_calc_form" action="{% url 'agglomerates:new_entry' date.id %}" method = "post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <!-- {{ form.as_p }} -->
+        <div class="fieldWrapper">
+            <label for="{{form.titanium_content_in_agglomerate.id_for_label}}"><p>Содержание титана в агломерате КГОК:</p><p><i>Ti</i><sub>a</sub></p><p>%</p></label> {{form.titanium_content_in_agglomerate}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.mechanical_strength_of_agglomerate.id_for_label}}"><p>Механическая (барабанная) прочность агломерата:</p><p><i>БП</i><sub>a</sub></p><p>%</p></label> {{form.mechanical_strength_of_agglomerate}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.output_in_agglomerate_of_size_class.id_for_label}}"><p>Выход в агломерате класса крупности -40+15мм:</p><p><i>&#402;</i><sup>-40+15</sup><sub>a</sub></p><p>%</p></label> {{form.output_in_agglomerate_of_size_class}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.specific_consumption_of_natural_gas.id_for_label}}"><p>Расход природного газа:</p><p><i>Q</i><sub>п.г.</sub></p><p>м³/т</p></label> {{form.specific_consumption_of_natural_gas}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.water_consumption_in_drum_pelletizer.id_for_label}}"><p>Расход воды в смесительном барабане общий:</p><p><i>Q</i><sub>в.см.</sub></p><p>т/час</p></label> {{form.water_consumption_in_drum_pelletizer}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.charge_consumption_before_seeding.id_for_label}}"><p>Расход агломерационной шихты до высева:</p><p><i>Q</i><sub>пх.д.</sub><p>т/час</p></label> {{form.charge_consumption_before_seeding}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.exhaust_gas_temperature.id_for_label}}"><p>Температура отходящих газов:</p><p><i>T</i><sub>o.газ</sub></p><p>°C</p></label> {{form.exhaust_gas_temperature}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.velocity_am.id_for_label}}"><p>Скорость агломашины:</p><p><i>&#957;</i><sub>а/м</sub></p><p>м/мин</p></label> {{form.velocity_am}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.jig_bed_weight.id_for_label}}"><p>Вес постели общий:</p><p><i>Q</i><sub>о.пс</sub></p><p>т/час</p></label> {{form.jig_bed_weight}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.content_titan_in_source_ore.id_for_label}}"><p>Содержание титана в концентрате:</p><p><i>Ti</i><sub>конц</sub></p><p>%</p></label> {{form.content_titan_in_source_ore}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.content_of_size_class_in_source_ore.id_for_label}}"><p>Содержание в концентрате класса крупности -0,071 мм:</p><p><i>&#945;</i><sub>-0,071</sub></p><p>%</p></label> {{form.content_of_size_class_in_source_ore}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.output_in_limestone_of_size_class.id_for_label}}"><p>Выход в известняке класса крупности +3, мм:</p><p><i>&#402;</i><sup>+3</sup><sub>изв</sub></p><p>%</p></label> {{form.output_in_limestone_of_size_class}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.specific_fuel_consumption.id_for_label}}"><p>Удельный расход топлива:</p><p><i>Q</i><sub>т</sub></p><p>кг/т</p></label> {{form.specific_fuel_consumption}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.consumption_of_agglomeration_charge_after_seeding.id_for_label}}"><p>Расход агломерационной шихты после высева:</p><p><i>Q</i><sub>шх.п</sub></p><p>т/час</p></label> {{form.consumption_of_agglomeration_charge_after_seeding}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.filling_level_of_bed_bin.id_for_label}}"><p>Уровень заполнения бункера постели:</p><p><i>H</i><sub>у.б</sub></p><p>%</p></label> {{form.filling_level_of_bed_bin}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.moisture_content_in_hopper_am.id_for_label}}"><p>Влажность шихты в бункере а/м:</p><p><i>W</i><sub>шх.б</sub></p><p>%</p></label> {{form.moisture_content_in_hopper_am}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.temperature_in_vacuum_chamber_no_eighteen.id_for_label}}"><p>Температура в вакуум-камере № 18:</p><p><i>T</i><sub>в-к18</sub></p><p>°C</p></label> {{form.temperature_in_vacuum_chamber_no_eighteen}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.temperature_in_vacuum_chamber_no_nineteen.id_for_label}}"><p>Температура в вакуум-камере № 19:</p><p><i>T</i><sub>в-к19</sub></p><p>°C</p></label> {{form.temperature_in_vacuum_chamber_no_nineteen}} 
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{form.actual_value_of_agglomeration_output.id_for_label}}"><p>Фактическое значение выхода глоотсева, кг/т:</p><p><i>&#913;</i><sub>ф</sub></p><p>кг/т</p></label> {{form.actual_value_of_agglomeration_output}} 
+        </div>
         <input type="submit" value="сохранить">
     </form>
 </div>

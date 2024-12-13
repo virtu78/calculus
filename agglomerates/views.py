@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 import datetime
 
@@ -7,6 +8,7 @@ from .models import Date, Entry
 from .forms import  DateForm, EntryForm
 from django.http import JsonResponse
 
+
 import xlwt
 
 from django.http import HttpResponse
@@ -15,6 +17,9 @@ from django.contrib.auth.models import User
 def index(request):
     """Домашняя странтца приложения agglomerate"""
     return render(request, "agglomerates/index.html")
+
+
+
 
 def new_date(request):
     """Определяем группу по для расчетов"""
@@ -28,9 +33,8 @@ def new_date(request):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('agglomerates:all_dates'))
-        
-    context = { 'form':form}
-    return render(request, 'agglomerates/new_date.html', context)
+
+ 
 
 def new_entry(request, id):
     """Определяем добавление нового расчета"""
@@ -75,8 +79,10 @@ def single_date(request, id):
 
 def table(request):
     """Выводи одну дату расчета и все записи в этот день"""
-    entries=Entry.objects.order_by('-date_added')    
-    context = {'entries':entries}
+    # entries=Entry.objects.order_by('-date_added') 
+    dates=Date.objects.all().prefetch_related('entry_set')
+    # entries=date.entry_set.order_by('-date_added')   
+    context = {'dates':dates}
     return render(request, 'agglomerates/table.html', context)
 
 def edit_actual_output(request, id):
@@ -96,7 +102,7 @@ def edit_actual_output(request, id):
     return render(request, 'agglomerates/edit_actual.html', context)
 
 
-def export_users_xls(request):
+def export_in_excel(request):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="agglomerate.xls"'
 
@@ -189,6 +195,11 @@ def export_users_xls(request):
    
     wb.save(response)
     return response
+
+def inputdate(request): 
+    context = {} 
+    context['form'] = GeeksForm() 
+    return render( request, "home.html", context)  
 
 
     

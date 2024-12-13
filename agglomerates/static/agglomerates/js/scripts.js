@@ -58,6 +58,9 @@ function scroll(ev){
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    const id_date_enter=document.querySelector('[for="id_date_enter"]');
+    if(id_date_enter)
+    id_date_enter.innerHTML="Введите дату";
     const item_menu_active = window.localStorage.getItem('active_menu')
     // alert(item_menu_active)
     const menu=document.querySelector('.menu');

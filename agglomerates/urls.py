@@ -16,7 +16,7 @@ urlpatterns = [
     re_path(r'^table/$', views.table, name='table'),
     
      re_path(r'^edit_actual/(?P<id>\d+)/$', views.edit_actual_output, name='edit_actual_output'),
-     re_path(r'^export/xls/$', views.export_users_xls, name='export_users_xls'), 
+     re_path(r'^export/xls/$', views.export_in_excel, name='export_in_excel'), 
      
     
 

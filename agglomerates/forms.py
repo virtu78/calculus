@@ -1,13 +1,18 @@
 # from django import forms
 
-
+from django import  forms
 from .models import Date, Entry
-from django.forms import ModelForm
+from django.forms import fields, ModelForm
+
 
 class DateForm(ModelForm):
+    date_enter = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        input_formats=['%Y-%m-%d', '%d-%m-%Y']
+    )
     class Meta:
         model = Date
-        fields=['text']
+        fields = ['date_enter']
         
         
 class EntryForm(ModelForm):
@@ -36,5 +41,10 @@ class EntryForm(ModelForm):
             'actual_value_of_agglomeration_output',            
             ]
         
+
+
+
+   
+
 
         

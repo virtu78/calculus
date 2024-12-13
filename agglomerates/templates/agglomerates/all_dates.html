@@ -12,7 +12,7 @@
     <ul class="date_calculate_date">
         {% for date in dates %}
     
-        <li> <a href="{% url 'agglomerates:single_date' date.id %}">{{ date.created|date:'d E Y' }}</a></li>
+        <li> <a href="{% url 'agglomerates:single_date' date.id %}">{{ date.date_enter|date:'d E Y' }}</a></li>
         {% empty %}
         <li>Не добавлено ни одного расчета пока</li>
         {% endfor %}

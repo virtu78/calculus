@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 from django.db.models import F
 from django.db.models.functions import (
     Pi, Power, Round
@@ -10,12 +11,14 @@ tz = timezone.get_default_timezone()
 class Date(models.Model):
     """Дата фиксирования переменной"""
     # comment = models.TextField(default='')
-    text = models.CharField(verbose_name="Введите название", default='', max_length=100)
+    # text = models.CharField(verbose_name="Введите название", default='', max_length=100)
+    date_enter=models.DateField(blank=False, null=True)
     created=models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        #  return 'Расчет от {}'.format(self.created.astimezone(tz).strftime('%d.%m.%Y %H:%M'))
-        return self.text
-
+         return 'Расчет от {}'.format(self.date_enter.strftime('%d.%m.%Y %H:%M'))
+        # return self.date_enter
+    # def __unicode__(self):
+    #     return "%s" % (self.date_enter)
 
 # class Entry(models.Model):
 #     """Факторная переменная(вводится оператором) 20 переменных"""
@@ -144,6 +147,9 @@ class Entry(models.Model):
 
     # class Meta:
     #     verbose_name_plural ='entries'
+
+
+
 
    
 

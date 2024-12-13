@@ -4,7 +4,18 @@ from django.contrib import admin
 
 
 from agglomerates.models import Date, Entry
+
+class DateAdmin(admin.ModelAdmin):
+    fields=[
+    'enter_date',
+    'created',
+   ]
+    readonly_fields = (
+        'created',)
+
 admin.site.register(Date)
+
+
 class EntryAdmin(admin.ModelAdmin):
     fields=[
     'date',

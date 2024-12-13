@@ -9,11 +9,11 @@
     <ul class="ul_data">
         {% for entry in entries %}
         <li>           
-            <div class="data_title"><p>Расчет от {{ entry.date_added|date:'d.m.Y H:i' }}</p><p><a href="/all_dates">Вернуться к общему списку</a></p></div>
+            <div class="data_title"><p>Расчет от {{ date.date_enter|date:'d.m.Y' }}</p><p><a href="/all_dates">Вернуться к общему списку</a></p></div>
             <div class="data_title">Данные:</div>
             <div class="data_text"><p>Содержание титана в агломерате КГОК:</p><p><i>Ti</i> <sub>a</sub></p><p>%</p><p>{{entry.titanium_content_in_agglomerate}}</p></div>
             <div class="data_text"><p>Механическая (барабанная) прочность агломерата:</p><p><i>БП</i><sub>a</sub></p><p>%</p><p>{{entry.mechanical_strength_of_agglomerate}}</p></div>
-            <div class="data_text"><p>Выход в агломерате класса крупности 40+15мм-:</p><p><i>&#402;</i><sup>-40+15</sup><sub>a</sub></p><p>%</p><p>{{entry.output_in_agglomerate_of_size_class}}</p></div>
+            <div class="data_text"><p>Выход в агломерате класса крупности -40+15мм:</p><p><i>&#402;</i><sup>-40+15</sup><sub>a</sub></p><p>%</p><p>{{entry.output_in_agglomerate_of_size_class}}</p></div>
             <div class="data_text"><p>Расход природного газа:</p><p><i>Q</i><sub>п.г.</sub></p><p>м³/т</p><p>{{entry.specific_consumption_of_natural_gas}}</p></div>
             <div class="data_text"><p>Расход воды в смесительном барабане общий:</p><p><i>Q</i><sub>в.см.</sub></p><p>т/час</p><p>{{entry.water_consumption_in_drum_pelletizer}}</p></div>
             <div class="data_text"><p>Расход агломерационной шихты до высева:</p><p><i>Q</i><sub>пх.д.</sub><p>т/час</p><p>{{entry.charge_consumption_before_seeding}}</p></div>
