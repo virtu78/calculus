@@ -132,11 +132,10 @@
                         <td class="estimate_output">{{entry.output_agglomerate}}</a></td>
                         <td class="actual_output" ><a href="{% url 'agglomerates:edit_actual_output' entry.id %}">{{ entry.actual_value_of_agglomeration_output }}</a></td>
                         <td >{{entry.difference_between_estimated_and_actual_values}}</td>
-                </tr>       
-            {% empty %}
-            <tr><td colspan="22">Расчеты отсутствуют</td></tr>
-            {% endfor %}
-        {% endfor %}
+                </tr>
+               
+            {% endfor %}           
+        {% endfor %}       
     </table>
 
 {% endblock content %}

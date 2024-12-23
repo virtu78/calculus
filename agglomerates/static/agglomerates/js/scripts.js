@@ -61,24 +61,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const id_date_enter=document.querySelector('[for="id_date_enter"]');
     if(id_date_enter)
     id_date_enter.innerHTML="Введите дату";
-    const item_menu_active = window.localStorage.getItem('active_menu')
+  
     // alert(item_menu_active)
     const menu=document.querySelector('.menu');
-    for(i=0; i<menu.childNodes.length; i++){
-        if(menu.childNodes[i].href==item_menu_active){
-            menu.childNodes[i].classList.add('active');
-            // alert(menu.childNodes[i].href);
+    for(i=0; i<menu.children.length; i++){ 
+        const item_menu_active = window.localStorage.getItem('active_menu')             
+        if(menu.children[i]==item_menu_active){
+            menu.children[i].classList.add('active');          
         }else{
-            // menu.childNodes[i].classList.remove('active');
+            menu.children[i].classList.remove('active');
         }
     } 
+    menu.addEventListener('click', e => {
+        const target = e.target;
+        window.localStorage.setItem('active_menu', e.target);        
+    })
+    
+      
+       
+    
+    
+
     // menu.childNodes.forEach(item => {
     // console.log(item.getAttribute('href'))
     // });
-    menu.addEventListener('click', e => {
-      const target = e.target;
-      window.localStorage.setItem('active_menu', e.target);  
-  })
+
     const tbody = document.querySelector('#table_agglomerates tbody');
     if(tbody){
         tbody.addEventListener('click', function (e) {

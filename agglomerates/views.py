@@ -56,7 +56,7 @@ def new_entry(request, id):
     
 def all_dates(request):
     """Выводи список дат расчетов"""
-    dates=Date.objects.order_by('created') 
+    dates=Date.objects.order_by('-created') 
     if request.method != 'POST':
         #Данные не отправлись, создается пустая форма.
         form= DateForm()
@@ -80,7 +80,7 @@ def single_date(request, id):
 def table(request):
     """Выводи одну дату расчета и все записи в этот день"""
     # entries=Entry.objects.order_by('-date_added') 
-    dates=Date.objects.all().prefetch_related('entry_set')
+    dates=Date.objects.all().prefetch_related('entry_set').order_by('-created')
     # entries=date.entry_set.order_by('-date_added')   
     context = {'dates':dates}
     return render(request, 'agglomerates/table.html', context)
