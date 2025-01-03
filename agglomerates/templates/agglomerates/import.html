@@ -1,0 +1,11 @@
+{% extends "agglomerates/base.html" %}
+{% block content %}
+<div class="container">
+    <form id="in_excel"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="excel_file">
+        <input type="submit" value="Сохранить в таблицу"></input>
+    </form>
+    
+</div>
+{% endblock content %}

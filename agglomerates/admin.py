@@ -4,7 +4,11 @@ from django.contrib import admin
 
 
 from agglomerates.models import Date, Entry
+from django.urls import path
+from openpyxl.reader.excel import load_workbook
 
+# from core.forms import XlsxImportForm
+# from django.core.models import Record
 class DateAdmin(admin.ModelAdmin):
     fields=[
     'enter_date',
@@ -98,3 +102,38 @@ admin.site.register(Entry, EntryAdmin)
 
 
 
+# class RecordAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'value')
+#     change_list_template = 'core/record_change_list.html'
+
+#     def get_urls(self):
+#         urls = super().get_urls()
+#         # Добавляем URL нашего обработчика импорта.
+#         my_urls = [
+#             path('import-records-from-xlsx/', self.import_records_from_xlsx),
+#         ]
+#         return my_urls + urls
+
+#     def import_records_from_xlsx(self, request):
+#         context = admin.site.each_context(request)
+#         if request.method == 'POST':
+#             xlsx_file = request.FILES['xlsx_file']
+
+#             workbook = load_workbook(filename=xlsx_file, read_only=True)
+#             worksheet = workbook.active
+
+#             # Читаем файл построчно и создаем объекты.
+#             records_to_save = []
+#             for row in worksheet.rows:
+#                 new_obj = self.model(name=row[0].value, value=row[1].value)
+#                 records_to_save.append(new_obj)
+#             self.model.objects.bulk_create(records_to_save)
+
+#             self.message_user(request, f'Импортировано строк: {len(records_to_save)}.')
+#             return redirect('admin:core_record_changelist')
+
+#         context['form'] = XlsxImportForm()
+#         return render(request, 'core/add_records_form.html', context=context)
+
+
+# admin.site.register(Record, RecordAdmin)

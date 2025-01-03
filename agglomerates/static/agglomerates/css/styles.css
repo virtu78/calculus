@@ -510,9 +510,15 @@ margin-right: 10px;
     color: #003153;
 }
 .export_in_excel{
-   width: 100%;
-   display: flex;
-   justify-content: flex-end;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    position:relative;
+
+}
+.export_in_excel a:last-child{
+    margin-left: 1000px;
 }
 .export_in_excel a{
     text-decoration: none;
@@ -578,4 +584,45 @@ margin-right: 10px;
     border-color: #2a6496;;
     background-color: #2a6496;;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  }
+
+  /* .hide{
+    display: none;
+  }
+  .show{
+    position: absolute;
+
+    display: block;
+    left:50%;
+    margin-left:-250px;
+    width:250px;
+  } */
+  #in_excel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+    font-family: "Inter";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 14px;
+    color:#003153;
+  }
+  #in_excel input[type='file']{
+  
+    background: #F2F3F5;
+    
+  }
+  #in_excel input[type='submit']{
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #001585;
+    background: #F2F3F5;
+    
+    margin-top: 10px;
+  }
+  .success_data_save{
+    margin-top: 100px;
   }

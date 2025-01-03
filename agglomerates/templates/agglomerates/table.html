@@ -30,8 +30,11 @@
     <div class="formula_wrapp"><p><img id="formula" class="formula" src="../static/agglomerates/images/formula.png" alt=""></p><p class="deploy_formula" id="show_hide_formula_control"></p></div>
 </div>
 
-<div class="export_in_excel"><a href="{% url 'agglomerates:export_in_excel' %}">Сохранить в Excel</a></div>
-    <table id="table_agglomerates" class="table_agglomerates">
+<div class="export_in_excel">
+    <a href="{% url 'agglomerates:export_in_excel' %}">Сохранить в Excel</a>
+    <a href="{% url 'agglomerates:import_from_excel' %}">Данные из Excel</a>    
+</div>
+<table id="table_agglomerates" class="table_agglomerates">
         <tr class="measurement"> 
                
             <td  class="vertical_text">Расчет от:</td>            

@@ -141,6 +141,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         
       }
+    //   var save_in = document.getElementById('save_in');
+    //   if(save_in){
+        
+    //     save_in.onclick = function(){ 
+           
+    //         document.getElementById("in_excel").classList.remove("hide");     
+    //         document.getElementById("in_excel").classList.add("show");
+        
+    //       }
+         
+    //   }
       let startFunctionPos = 300;
       let isActiveFun = false;
       window.addEventListener('scroll', () => {
@@ -153,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       })
       
-
+  
 
   }); 
 

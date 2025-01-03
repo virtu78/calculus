@@ -140,8 +140,8 @@ class Entry(models.Model):
 
         
     )
-    # def __str__(self):
-    #      return 'Выход аглоотсева, кг/т: {}'.format(self.output_agglomerate)+format(self.date_added.astimezone(tz).strftime('%d.%m.%Y %H:%M'))
+    def __str__(self):
+         return 'Расчет от {}'.format(self.date.date_enter.strftime('%d.%m.%Y'))
     
     
 

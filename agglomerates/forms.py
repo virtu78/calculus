@@ -42,7 +42,8 @@ class EntryForm(ModelForm):
             ]
         
 
-
+class XlsxImportForm(forms.Form):
+    xlsx_file = forms.FileField()
 
    
 
